@@ -12,4 +12,4 @@ def average(nums: list[float]) -> float:
     """
     if not nums:
         raise ValueError("空のリストの平均は計算できません")
-    return sum(nums) / len(nums)
+    return sum(nums) // len(nums)   # バグ: 小数点以下が切り捨てられる
