@@ -1,0 +1,25 @@
+# .github/workflows/ci.yml
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: リポジトリを取ってくる
+        uses: actions/checkout@v7
+
+      - name: Python を用意する
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+
+      - name: パッケージを入れる
+        run: pip install -r requirements.txt
+
+      - name: テストを実行する
+        run: pytest
